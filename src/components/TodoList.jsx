@@ -1,30 +1,23 @@
-function TodoList() {
+function TodoList({todos}) {
     return ( 
     <>
-    {/* ul,li태그 */}
         <ul>
-            <li>
-            1
-            <input type = "checkbox"/>
-            아이템
-            <button>🗑️</button>
-            </li>
-
-            <li>
-            2
-            <input type = "checkbox"/>
-            아이템
-            <button>🗑️</button>
-            </li>
-
-            <li>
-            3
-            <input type = "checkbox"/>
-            아이템
-            <button>🗑️</button>
-            </li>
+            {todos.map((row) => (
+                <li
+                    key = {row.id}
+                    style = {{
+                        textDecoration: row.checked
+                            ? 'line-through'
+                            : 'none',
+                    }}
+                >
+                    <input type = "checkbox" checked = {row.checked} />
+                    {row.id} / {row.text} / <button>🗑️</button>
+                </li>
+            ))}
         </ul>
-    </> );
+    </>
+);
 }
 
 export default TodoList;
