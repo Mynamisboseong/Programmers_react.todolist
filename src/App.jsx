@@ -9,12 +9,19 @@ function App() {
     { id: 1, text: '할일1', checked: true },
     { id: 2, text: '할일2', checked: true },
     { id: 3, text: '할일3', checked: false }
-
   ])
+
+  let lastId = todos.length + 1
+
+  const onInsert = (text) => {
+    const newTodos = [...todos, {id: lastId, text:text, checked: false}]
+    setTodos(newTodos)
+    lastId++
+  }
 
   return (<>
     <TodoHeader/>
-    <TodoForm/>
+    <TodoForm onInsert = {onInsert}/>
     <TodoList todos = {todos}/>
   </>)
 }
