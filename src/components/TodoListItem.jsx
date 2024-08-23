@@ -1,4 +1,4 @@
-function TodoListItem({todo}) {
+function TodoListItem({todom,onDelete,onToggle}) {
     return ( 
         <>
             <li
@@ -8,8 +8,12 @@ function TodoListItem({todo}) {
                         : 'none',
                 }}
             >
-                <input type = "checkbox" checked = {todo.checked} />
-                {todo.id} / {todo.text} / <button>🗑️</button>
+                <input 
+                onClick = {() => onToggle(todo.id)}
+                type = "checkbox" 
+                checked = {todo.checked} />
+                {todo.id} / {todo.text} /
+                <button onClick = {() => onDelete(todo.id)}>🗑️</button>
             </li>
         </>
     );

@@ -19,10 +19,20 @@ function App() {
     lastId++
   }
 
+  const onDelete = (id) => {
+    const newTodos = todos.filter(todo => todo.id == id)
+  }
+
+  const onToggle = (id) => {
+    const newTodos = todos.map((todo) =>
+        todo.id === id ? {...todo, checked: !todo.checked}: todo)
+    setTodos(newTodos)
+  }
+
   return (<>
     <TodoHeader/>
     <TodoForm onInsert = {onInsert}/>
-    <TodoList todos = {todos}/>
+    <TodoList todos = {todos} onDelete={onDelete} onToggle={onToggle}/>
   </>)
 }
 
